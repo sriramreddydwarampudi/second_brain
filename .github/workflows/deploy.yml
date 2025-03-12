@@ -1,0 +1,34 @@
+name: Deploy Antora Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Antora
+        run: npm install -g @antora/cli @antora/site-generator-default
+
+      - name: Build Site
+        run: antora antora-playbook.yml
+
+      - name: Deploy to GitHub Pages
+        run: |
+          cd public
+          git init
+          git remote add origin https://github.com/sriramreddydwarampudi/second_brain.git
+          git checkout -b gh-pages
+          git add .
+          git commit -m "Deploy Antora site"
+          git push origin gh-pages --force
