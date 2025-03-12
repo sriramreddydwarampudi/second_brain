@@ -1,6 +1,10 @@
+
 site:
-  title: Docs Site
-  start_page: project-name::index.adoc
+  title: My Documentation
+  url: https://sriramreddydwarampudi.github.io/second_brain/
+  start_page: my-docs::index.adoc
+urls:
+  html_extension_style: indexify
 content:
   sources:
     - url: .

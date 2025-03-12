@@ -1,14 +1,13 @@
-name: Deploy Antora Docs
+name: Deploy Antora Site
 
 on:
   push:
     branches:
-      - main
+      - main  # Change if using a different branch
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -21,20 +20,11 @@ jobs:
       - name: Install Antora
         run: npm install -g @antora/cli @antora/site-generator-default
 
-      - name: Build Antora Site
+      - name: Generate Site
         run: antora antora-playbook.yml
 
-      - name: Set Git identity
-        run: |
-          git config --global user.name "sriramreddydwarampudi"
-          git config --global user.email "sriramreddydwarampudi@gmail.com"
-
       - name: Deploy to GitHub Pages
-        run: |
-          cd public
-          git init
-          git checkout -b gh-pages
-          git add .
-          git commit -m "Deploy Antora site"
-          git remote add origin https://x-access-token:${{ secrets.S_S }}@github.com/sriramreddydwarampudi/second_brain.git
-          git push --force origin gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.S_S }}
+          publish_dir: ./build/site  # Ensure this matches your Antora output directory

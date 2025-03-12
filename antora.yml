@@ -1,5 +1,5 @@
-name: project-name
-title: Project Documentation
+name: my-docs
+title: My Documentation
 version: latest
 nav:
   - modules/ROOT/nav.adoc

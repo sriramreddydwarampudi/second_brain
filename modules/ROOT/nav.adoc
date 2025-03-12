@@ -1,2 +1,2 @@
-* xref:index.adoc[Home]
+* xref:index.adoc[house page]
 * xref:your_file.adoc[Your New Page]
