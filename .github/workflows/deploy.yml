@@ -36,4 +36,5 @@ jobs:
           git checkout -b gh-pages
           git add .
           git commit -m "Deploy Antora site"
+          git remote add origin https://x-access-token:${{ secrets.S_S }}@github.com/sriramreddydwarampudi/second_brain.git
           git push --force origin gh-pages
