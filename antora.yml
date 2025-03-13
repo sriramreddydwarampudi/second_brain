@@ -2,4 +2,5 @@ name: my-docs
 title: My Documentation
 version: latest
 nav:
-  - modules/ROOT/nav.adoc
+  - modules/ROOT/nav.adoc 
+  - modules/medicine/nav.adoc
